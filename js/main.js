@@ -105,9 +105,16 @@ const icons = [
     },
 ];
 
-const iconsContainer = document.getElementById('icons');
+const iconsContainer = document.getElementById("icons");
 color(icons);
 stamp(icons,iconsContainer);
+let option = document.getElementById("option");
+
+option.onchange = function (element){
+const selection =  opt(icons,element.target.value);
+stamp(selection,iconsContainer);
+    
+}
 
 // function// function// function// function
 
@@ -144,7 +151,18 @@ function color(array) {
     return array
 };
 
-// function  {}
-
+function opt (array,value) {
+    const options = array.filter((element) => {
+        if (element.type === value  ) {
+            return true
+        }
+        return false
+    });
+    if(value === "") {
+        return array
+    }
+    return options
+};
+    
 
 
